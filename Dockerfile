@@ -21,8 +21,9 @@ RUN apt-get install -y --no-install-recommends\
     g++ \
     zlib1g-dev \
     apt-utils \
+    cmake \
     bzip2
-# Multistage step 2    
+# Multistage step 2
 FROM build1 as build2
 USER root
 RUN apt-get install -y --no-install-recommends libyaml-dev \
@@ -49,6 +50,7 @@ RUN apt-get install -y --no-install-recommends libyaml-dev \
     nano \
     libyaml-0-2
 FROM build2
+RUN alias python='python2'
 USER root
 RUN wget http://releases.numenta.org/pip/1ebd3cb7a5a3073058d0c9552ab074bd/get-pip.py -O - | python
 RUN pip install --upgrade setuptools
