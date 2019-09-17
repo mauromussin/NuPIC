@@ -71,8 +71,8 @@ ENV NTA_DATA_PATH /usr/local/src/nupic/prediction/data
 ENV USER docker
 
 # Set up nupic.core
-#RUN pip install numpy
-#RUN pip install pycapnp
+RUN pip install numpy
+RUN pip install pycapnp
 RUN git clone https://github.com/numenta/nupic.core /usr/local/src/nupic.core
 WORKDIR /usr/local/src/nupic.core
 RUN mkdir -p build/scripts
