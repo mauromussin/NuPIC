@@ -2,54 +2,8 @@
 # version 0
 # from the jupyter notebook base image adding some stuff from Numenta
 
-ARG BASE_CONTAINER=jupyter/base-notebook
-FROM $BASE_CONTAINER as build1
-
-# Put here some proxy stuff
-# CAUTION: due to a stiff proxy use sometimes you have to include http:// and some other not
-#ENV http_proxy=http://<user>:<password>@some.proxy:port
-#ENV https_proxy=https://<user>:<password>@some.proxy:port
-
-USER root
-# Install dependencies
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends\
-    curl \
-    wget \
-    git-core \
-    gcc \
-    g++ \
-    zlib1g-dev \
-    apt-utils \
-    cmake \
-    bzip2
-# Multistage step 2
-FROM build1 as build2
-USER root
-RUN apt-get install -y --no-install-recommends libyaml-dev \
-    build-essential \
-    emacs \
-    git \
-    inkscape \
-    jed \
-    libsm6 \
-    libxext-dev \
-    libxrender1 \
-    lmodern \
-    netcat \
-    pandoc \
-    python-dev \
-    texlive-fonts-extra \
-    texlive-fonts-recommended \
-    texlive-generic-recommended \
-    texlive-latex-base \
-    texlive-latex-extra \
-    texlive-xetex \
-    tzdata \
-    unzip \
-    nano \
-    libyaml-0-2
-FROM build2
+ARG BASE_CONTAINER=mauromussin/ubuntunupic:test
+FROM $BASE_CONTAINER 
 RUN alias python='python2'
 USER root
 RUN wget http://releases.numenta.org/pip/1ebd3cb7a5a3073058d0c9552ab074bd/get-pip.py -O - | python
