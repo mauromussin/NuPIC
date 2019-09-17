@@ -1,5 +1,5 @@
-FROM continuumio/anaconda
-ENV PATH /opt/conda/envs/env/bin:$PATH
+FROM continuumio/miniconda
+#ENV PATH /opt/conda/envs/env/bin:$PATH
 RUN conda create -n env python=2.7
 RUN echo "source activate env" > ~/.bashrc
 WORKDIR /home
