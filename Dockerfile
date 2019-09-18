@@ -18,9 +18,11 @@ RUN $CONDA_DIR/envs/python2/bin/python -m ipykernel install && \
 $CONDA_DIR/envs/python2/bin/kernda -o -y /usr/local/share/jupyter/kernels/python2/kernel.json
 
 USER $NB_USER
+# setup puthon2.7 env
+RUN pip install virtualenv
+RUN virtualenv -p /usr/bin/python2.7 virtualenv_name
+RUN source nupic/bin/activate
 
-
-RUN alias python='python2'
 
 RUN wget http://releases.numenta.org/pip/1ebd3cb7a5a3073058d0c9552ab074bd/get-pip.py -O - | python
 RUN pip install --upgrade setuptools
