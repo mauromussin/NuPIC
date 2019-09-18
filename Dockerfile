@@ -20,7 +20,7 @@ $CONDA_DIR/envs/python2/bin/kernda -o -y /usr/local/share/jupyter/kernels/python
 USER $NB_USER
 # setup puthon2.7 env
 RUN pip install virtualenv
-RUN virtualenv -p /usr/bin/python2.7 virtualenv_name
+RUN virtualenv -p /usr/bin/python2.7 nupic
 RUN source nupic/bin/activate
 
 
