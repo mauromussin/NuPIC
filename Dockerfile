@@ -21,7 +21,7 @@ USER $NB_USER
 # setup puthon2.7 env
 RUN pip install virtualenv
 RUN virtualenv -p /usr/bin/python2.7 nupic
-RUN source nupic/bin/activate
+RUN /bin/bash -c "source nupic/bin/activate"
 
 
 RUN wget http://releases.numenta.org/pip/1ebd3cb7a5a3073058d0c9552ab074bd/get-pip.py -O - | python
