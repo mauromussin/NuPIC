@@ -36,7 +36,10 @@ ENV NTA_DATA_PATH /usr/local/src/nupic/prediction/data
 
 #ENV http_proxy=<user>:<password>@some.proxy:port
 #ENV https_proxy=<user>:<password>@some.proxy:port
-
+USER root
+RUN pip install virtualenv
+RUN virtualenv -p /usr/bin/python2.7 nupic
+RUN /bin/bash -c "source nupic/bin/activate nupic"
 # OPF needs this
 
 #############  al flagged
