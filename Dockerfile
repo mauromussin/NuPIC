@@ -20,6 +20,7 @@ $CONDA_DIR/envs/python2/bin/kernda -o -y /usr/local/share/jupyter/kernels/python
 USER $NB_USER
 # setup puthon2.7 env
 RUN pip install virtualenv
+COPY p2activate.sh .
 RUN ./p2activate.sh
 
 
