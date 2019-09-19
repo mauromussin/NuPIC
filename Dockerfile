@@ -18,10 +18,7 @@ RUN $CONDA_DIR/envs/python2/bin/python -m ipykernel install && \
 $CONDA_DIR/envs/python2/bin/kernda -o -y /usr/local/share/jupyter/kernels/python2/kernel.json
 
 USER $NB_USER
-# setup puthon2.7 env
-RUN pip install virtualenv
-COPY p2activate.sh .
-RUN ./p2activate.sh
+
 
 
 
@@ -41,7 +38,10 @@ ENV NTA_DATA_PATH /usr/local/src/nupic/prediction/data
 #ENV https_proxy=<user>:<password>@some.proxy:port
 
 # OPF needs this
-
+# setup puthon2.7 env (in the right dir)
+RUN pip install virtualenv
+COPY p2activate.sh .
+RUN ./p2activate.sh
 
 # Set up nupic.core
 RUN pip install numpy
