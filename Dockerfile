@@ -53,7 +53,7 @@ WORKDIR /usr/local/src/nupic.core
 RUN mkdir -p build/scripts
 WORKDIR /usr/local/src/nupic.core/build/scripts
 RUN cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=../release -DPY_EXTENSIONS_DIR=../../bindings/py/nupic/bindings ../..
-RUN make install
+#RUN make install
 #WORKDIR /usr/local/src/nupic.core
 #RUN python setup.py install
 
