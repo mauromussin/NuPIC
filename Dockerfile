@@ -44,16 +44,17 @@ RUN /bin/bash -c "source nupic/bin/activate nupic"
 
 #############  al flagged
 # Set up nupic.core
-#RUN pip-2.7 install numpy
-#RUN pip-2.7 install pycapnp
-#USER root
-#RUN git clone https://github.com/numenta/nupic.core /usr/local/src/nupic.core
-#WORKDIR /usr/local/src/nupic.core
+RUN pip install numpy
+RUN pip install pycapnp
+USER root
+RUN git clone https://github.com/numenta/nupic.core /usr/local/src/nupic.core
+WORKDIR /usr/local/src/nupic.core
 
 #USER docker
-#RUN mkdir -p build/scripts
-#WORKDIR /usr/local/src/nupic.core/build/scripts
-#RUN cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=../release -DPY_EXTENSIONS_DIR=../../bindings/py/nupic/bindings ../..
+RUN mkdir -p build/scripts
+WORKDIR /usr/local/src/nupic.core/build/scripts
+ENV CFLAGS -I~/nupic/local/lib/python2.7/site-packages/numpy/core/include/numpy $CFLAGS
+RUN cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=../release -DPY_EXTENSIONS_DIR=../../bindings/py/nupic/bindings ../..
 #RUN make install
 #WORKDIR /usr/local/src/nupic.core
 #RUN python setup.py install
