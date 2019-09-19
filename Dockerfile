@@ -38,14 +38,11 @@ ENV NTA_DATA_PATH /usr/local/src/nupic/prediction/data
 #ENV https_proxy=<user>:<password>@some.proxy:port
 
 # OPF needs this
-# setup puthon2.7 env (in the right dir)
-RUN pip install virtualenv
-COPY p2activate.sh .
-RUN ./p2activate.sh
+
 
 # Set up nupic.core
-RUN pip install numpy
-RUN pip install pycapnp
+RUN pip2 install numpy
+RUN pip2 install pycapnp
 USER root
 RUN git clone https://github.com/numenta/nupic.core /usr/local/src/nupic.core
 WORKDIR /usr/local/src/nupic.core
